@@ -1,5 +1,3 @@
-#pragma once
-
 /**
  * Author: Pakapim E.
  * Date: 2025-11-01
@@ -7,7 +5,6 @@
  * Time: $O(N \log N)$
  */
 
-#include <bits/stdc++.h>
 using namespace std;
 
 using ll = long long;
