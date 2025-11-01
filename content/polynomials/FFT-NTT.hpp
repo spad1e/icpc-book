@@ -7,6 +7,9 @@
  * Time: $O(N \log N)$
  */
 
+#include <bits/stdc++.h>
+using namespace std;
+
 using ll = long long;
 using poly = vector<ll>;
 const ll M=998244353; // M=7340033 -> pr=5, M=998244353 -> pr=3
