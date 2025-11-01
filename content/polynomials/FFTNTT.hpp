@@ -233,10 +233,3 @@ pair<poly, poly> poly_divmod(poly a, poly b) {
     r.resize(m-1);
     return {q, r};
 }
-
-int main (){
-    ios::sync_with_stdio(0); cin.tie(0);
-    vector<cd> a={1,2}, b={3,4};
-    vector<cd> c=multiply(a,b);
-    for (auto e:c) cout << e << ' ';
-}
