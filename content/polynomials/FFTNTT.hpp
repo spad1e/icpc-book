@@ -129,7 +129,6 @@ poly poly_inv(poly f, int m) {
     return g;
 }
  
-// f[0]=1 needed
 poly poly_sqrt(const poly& f, int m) {
     poly g(1,1);
     int inv2 = (M + 1) / 2;
@@ -149,7 +148,6 @@ poly poly_sqrt(const poly& f, int m) {
     return g;
 }
  
-// derivative
 poly poly_d(const poly& f) {
     int n = f.size();
     poly g(max<int>(0,n-1));
@@ -157,7 +155,6 @@ poly poly_d(const poly& f) {
     return g;
 }
  
-// integral
 poly poly_int(const poly& f) {
     int n = f.size();
     poly g(n+1);
@@ -174,7 +171,6 @@ poly poly_int(const poly& f) {
     return g;
 }
  
-// ln(f),f[0]=1
 poly poly_ln(const poly& f, int m) {
     auto df = poly_d(f);
     auto invf = poly_inv(f, m);
@@ -185,7 +181,6 @@ poly poly_ln(const poly& f, int m) {
     return res;
 }
  
-// exp(f), f[0]=0 
 poly poly_exp(const poly& f, int m) {
     poly g(1,1);
     for (int len = 1; len < m; len <<= 1) {
@@ -202,14 +197,12 @@ poly poly_exp(const poly& f, int m) {
     return g;
 }
  
-// f^k, f[0]=1 or constant term is 0, O(m log m)
 poly poly_pow(const poly& f, ll k, int m) {
     auto ln_f = poly_ln(f, m);
     for (int i = 0; i < m; i++) ln_f[i] = (ll)ln_f[i] * (k % (M-1)) % M;
     return poly_exp(ln_f, m);
 }
  
-// a = b*q + r : cal(q,r)
 pair<poly, poly> poly_divmod(poly a, poly b) {
     int n = a.size(), m = b.size();
     if (n < m) return {{0}, a};
@@ -219,7 +212,6 @@ pair<poly, poly> poly_divmod(poly a, poly b) {
     auto rq = multiply(ra, inv_rb);
     rq.resize(k);
     poly q(rq.rbegin(), rq.rend());
-    // remainder r = a - b*q
     auto bq = multiply(b, q);
     poly r = a;
     for (int i = 0; i < (int)bq.size(); i++)
