@@ -202,7 +202,7 @@ poly poly_exp(const poly& f, int m) {
     return g;
 }
  
-// f^k, f[0]=1 or constant term is 0 ，O(m log m)
+// f^k, f[0]=1 or constant term is 0, O(m log m)
 poly poly_pow(const poly& f, ll k, int m) {
     auto ln_f = poly_ln(f, m);
     for (int i = 0; i < m; i++) ln_f[i] = (ll)ln_f[i] * (k % (M-1)) % M;
